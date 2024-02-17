@@ -86,6 +86,11 @@ class CustomMayaShelf:
 
         return cmds.menuItem(p=parent, l=label, c=command, i=image)
 
+    @staticmethod
+    def add_popup_menu():
+        """Adds a popup menu. Mainly a convenience function."""
+        return cmds.menuItem(b=1)
+
     def add_sub_menu(self, parent: str, label: str, icon: str = ''):
         """Adds a sub menu item with the specified label, and optional image, to the specified parent popup menu."""
         image = pathlib.Path(self.icon_path, icon).as_posix()
@@ -95,37 +100,3 @@ class CustomMayaShelf:
     def add_separator(style: str = 'none', height: int = 40, width: int = 16):
         """Adds a separator to space sections of the shelf apart."""
         return cmds.separator(style=style, h=height, w=width)
-
-
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Custom Shelves
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-def test_func():
-    print('hello world')
-
-
-class ExampleShelf(CustomMayaShelf):
-    """Example custom shelf."""
-    def __init__(self):
-        super().__init__('Example')
-
-    def build(self):
-        self.add_button('Hello\nWorld', command=test_func)
-        self.add_separator()
-        self.add_button('Sub\nMenus')
-        menu1 = cmds.popupMenu(b=1)
-        self.add_menu_item(menu1, 'You')
-        self.add_menu_item(menu1, 'Lost')
-        submenu1 = self.add_sub_menu(menu1, 'The')
-        self.add_menu_item(submenu1, 'Game')
-
-
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Main block
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-def main():
-    ExampleShelf()
