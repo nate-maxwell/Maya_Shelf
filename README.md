@@ -16,6 +16,8 @@ Creating a shelf will add a shelf to maya's shelf section and then add each item
 If a shelf exists with the given name, it will be emptied and filled with the items
 implemented in the custom shelf class.
 
+Naming your shelf is done by passing the name into the parent class constructor.
+
 You can create a shelf with the following code:
 ```python
 from mayashelf.shelves import CustomMayaShelf
@@ -25,7 +27,7 @@ import my.func.lib
 class ExampleShelf(CustomMayaShelf):
     """Example custom shelf."""
     def __init__(self):
-        super().__init__('Example')
+        super().__init__('Example')  # Shelf name
 
     def build(self):
         self.add_button('Hello\nWorld', command=my.func.lib.function)
