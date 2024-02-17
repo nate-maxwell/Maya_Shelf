@@ -5,7 +5,7 @@ requires = ["setuptools", "setuptools-scm"]
 packages = ["Maya_Shelf"]
 
 [project]
-name = "Easy Maya Shelf"
+name = "mayashelf"
 authors = [
     {name = "Nathan Maxwell"}
 ]
