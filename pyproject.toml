@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+
+[tool.setuptools]
+packages = ["Maya_Shelf"]
+
+[project]
+name = "Easy Maya Shelf"
+authors = [
+    {name = "Nathan Maxwell"}
+]
+description = "A simple shelf manager for Autodesk Maya."
+readme = "README.md"
+requires-python = ">=3.4"
+keywords = ["maya", "scripter"]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+]
+dependencies = []
+version = "0.0.1"
+
+[project.urls]
+Homepage = "https://github.com/nate-maxwell/Maya_Shelf"
+Source = "https://github.com/nate-maxwell/Maya_Shelf"
