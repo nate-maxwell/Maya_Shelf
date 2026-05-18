@@ -62,15 +62,20 @@ class CustomMayaShelf:
         items = cmds.shelfLayout(self.name, q=1, ca=1)
         cmds.deleteUI(items[-1])
 
-    def add_button(self, label: str, icon: str = 'commandButton.png', command=_null, double_command=_null) -> None:
+        def add_button(self, label: str, icon: str = 'commandButton.png', command=_null, double_command=_null) -> None:
         """Adds a shelf button with the specified label, command, double click command, and image."""
         cmds.setParent(self.name)
-        image = pathlib.Path(self.icon_path, icon)
-        if not image.exists():
-            image = 'commandButton.png'
 
-        cmds.shelfButton(width=40, height=40, image=image, l=label, command=command, dcc=double_command,
-                         imageOverlayLabel=label, olb=self.label_background, olc=self.label_color,
+        if self.icon_path:
+            candidate = Path(self.icon_path, icon)
+            image = str(candidate) if candidate.exists() else icon
+        else:
+            image = icon
+
+        cmds.shelfButton(width=40, height=40, image=image, l=label,
+                         command=command, dcc=double_command,
+                         imageOverlayLabel=label, olb=self.label_background,
+                         olc=self.label_color,
                          fn='tinyBoldLabelFont')
 
     def add_menu_item(self, parent, label, icon: str = '', command=_null):
